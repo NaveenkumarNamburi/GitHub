@@ -1,0 +1,512 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AutoResponseRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <autoResponseRule>
+        <fullName>Sales Operations Case</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Sales Operations</value>
+            </criteriaItems>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <replyToEmail>salesops@nutanix.com</replyToEmail>
+            <senderEmail>notification_salesops@nutanix.com</senderEmail>
+            <senderName>Nutanix Sales Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Sales_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Shared Services</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>sharedservices@nutanix.com</replyToEmail>
+            <senderEmail>notification_salesops@nutanix.com</senderEmail>
+            <senderName>Nutanix Sales Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Sales_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - WW Business Operations</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>wwbizops@nutanix.com</replyToEmail>
+            <senderEmail>notification_wwbizops@nutanix.com</senderEmail>
+            <senderName>Nutanix Sales Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Sales_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Channel Operations</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>channelops@nutanix.com</replyToEmail>
+            <senderEmail>notification_channelops@nutanix.com</senderEmail>
+            <senderName>Nutanix Channel Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - AMR Orders</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>americas_orders@nutanix.com</replyToEmail>
+            <senderEmail>notification_americas_orders@nutanix.com</senderEmail>
+            <senderName>Nutanix Americas Orders</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders_Americas_Orders</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - EMEA Orders</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>emea_orders@nutanix.com</replyToEmail>
+            <senderEmail>notification_emea_orders@nutanix.com</senderEmail>
+            <senderName>Nutanix EMEA Orders</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders_EMEA_Orders</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - APAC Orders</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>apac_orders@nutanix.com</replyToEmail>
+            <senderEmail>notification_apac_orders@nutanix.com</senderEmail>
+            <senderName>Nutanix APAC Orders</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - POC</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>poc@nutanix.com</replyToEmail>
+            <senderEmail>notification_poc@nutanix.com</senderEmail>
+            <senderName>Nutanix POC</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders_POC</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Partner Help</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>partnerhelp@nutanix.com</replyToEmail>
+            <senderEmail>notification_partnerhelp@nutanix.com</senderEmail>
+            <senderName>Nutanix PartnerHelp</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_PartnerHelp</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO Education</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>education@nutanix.com</replyToEmail>
+            <senderEmail>notification_education@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO Ops</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>gso_ops@nutanix.com</replyToEmail>
+            <senderEmail>notification_gso_ops@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO University</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>nu.school@nutanix.com</replyToEmail>
+            <senderEmail>notification_nu.school@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO Training</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>training@nutanix.com</replyToEmail>
+            <senderEmail>notification_training@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+    </autoResponseRule>
+    <autoResponseRule>
+        <fullName>Sales Ops and CSA Cases</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Sales Operations</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>salesops@nutanix.com</replyToEmail>
+            <senderEmail>notification_salesops@nutanix.com</senderEmail>
+            <senderName>Nutanix Sales Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Sales_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Shared Services</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>sharedservices@nutanix.com</replyToEmail>
+            <senderEmail>notification_salesops@nutanix.com</senderEmail>
+            <senderName>Nutanix Sales Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Sales_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - WW Business Operations</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>wwbizops@nutanix.com</replyToEmail>
+            <senderEmail>notification_wwbizops@nutanix.com</senderEmail>
+            <senderName>Nutanix Sales Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Sales_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Channel Operations</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>channelops@nutanix.com</replyToEmail>
+            <senderEmail>notification_channelops@nutanix.com</senderEmail>
+            <senderName>Nutanix Channel Operations</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - AMR Orders</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>americas_orders@nutanix.com</replyToEmail>
+            <senderEmail>notification_americas_orders@nutanix.com</senderEmail>
+            <senderName>Nutanix Americas Orders</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders_Americas_Orders</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - EMEA Orders</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>emea_orders@nutanix.com</replyToEmail>
+            <senderEmail>notification_emea_orders@nutanix.com</senderEmail>
+            <senderName>Nutanix EMEA Orders</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders_EMEA_Orders</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - APAC Orders</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>apac_orders@nutanix.com</replyToEmail>
+            <senderEmail>notification_apac_orders@nutanix.com</senderEmail>
+            <senderName>Nutanix APAC Orders</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - POC</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>poc@nutanix.com</replyToEmail>
+            <senderEmail>notification_poc@nutanix.com</senderEmail>
+            <senderName>Nutanix POC</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Channel_Operations_APAC_Orders_POC</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Partner Help</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>partnerhelp@nutanix.com</replyToEmail>
+            <senderEmail>notification_partnerhelp@nutanix.com</senderEmail>
+            <senderName>Nutanix PartnerHelp</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_PartnerHelp</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO Education</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>education@nutanix.com</replyToEmail>
+            <senderEmail>notification_education@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO Ops</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>gso_ops@nutanix.com</replyToEmail>
+            <senderEmail>notification_gso_ops@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO University</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>nu.school@nutanix.com</replyToEmail>
+            <senderEmail>notification_nu.school@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - GSO Training</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>training@nutanix.com</replyToEmail>
+            <senderEmail>notification_training@nutanix.com</senderEmail>
+            <senderName>Nutanix Education</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Education</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Deal Reg</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>dealregistration@nutanix.com</replyToEmail>
+            <senderEmail>notification_dealregistration@nutanix.com</senderEmail>
+            <senderName>Nutanix Deal Reg</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Deal_Reg</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Data Management</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>datamanagement@nutanix.com</replyToEmail>
+            <senderEmail>notification-datamanagement@nutanix.com</senderEmail>
+            <senderName>Nutanix Data Management</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Data_Management</template>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email - Partner Quoting</value>
+            </criteriaItems>
+            <notifyCcRecipients>false</notifyCcRecipients>
+            <replyToEmail>partnerquoting@nutanix.com</replyToEmail>
+            <senderEmail>notification_partnerquoting@nutanix.com</senderEmail>
+            <senderName>Nutanix Partner Quoting</senderName>
+            <template>Sales_Support/Sales_Operations_New_Case_Partner_Quoting</template>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>TEXT(Origin) = &apos;Email-CSA&apos; &amp;&amp; NOT((HOUR(TIMEVALUE(CreatedDate)) &gt;= 1 &amp;&amp; GMT_Day_of_the_Week_Opened__c = &quot;Saturday&quot;) || GMT_Day_of_the_Week_Opened__c = &quot;Sunday&quot; ||  (GMT_Day_of_the_Week_Opened__c = &quot;Monday&quot; &amp;&amp; HOUR(TIMEVALUE(CreatedDate)) &lt;2))</formula>
+            <notifyCcRecipients>true</notifyCcRecipients>
+            <replyToEmail>portal-accounts@nutanix.com</replyToEmail>
+            <senderEmail>portal-accounts@nutanix.com</senderEmail>
+            <senderName>Portal Accounts</senderName>
+            <template>Support/Notify_case_contact_on_new_portal_case_creation</template>
+        </ruleEntry>
+    </autoResponseRule>
+</AutoResponseRules>
