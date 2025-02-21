@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>Nutanix Case Assignment Rule</fullName>
+        <active>true</active>
+        <ruleEntry>
+            <assignedTo>Technical_Alliance_Unassigned</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>ISNEW() &amp;&amp; RecordType.Name=&apos;Technology Alliance&apos;</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Scheduler</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>NOT( ISNULL(Schedule_Time__c) ) &amp;&amp; ISNEW()</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <formula>AND( NOT(ISNEW()), NOT(ISPICKVAL(Status,&quot;Unassigned&quot;)))</formula>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Advanced_API_SDK_Unassigned_Handoff</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>Advanced API/SDK Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Product_Type__c</field>
+                <operation>equals</operation>
+                <value>Advanced API/SDK Support</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CSA_Unassigned_Handoff_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 AND 2)  OR (2 AND 3)</booleanFilter>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email,Phone,Web</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>Licensing,Non Technical issue,Billing</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Case_Transfer_To__c</field>
+                <operation>equals</operation>
+                <value>Cisco</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Priority_Support</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>(1 OR 2 OR 3 OR 4 OR 6) AND 5</booleanFilter>
+            <criteriaItems>
+                <field>Case.Entitlement__c</field>
+                <operation>startsWith</operation>
+                <value>Platinum Plus,FEDERAL Mission Critical,Dell,Fujitsu,HPE,IBM,Lenovo,Inspu,Premier</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Account.Authorized_Service_Provider_ASP__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Contact_Account__c</field>
+                <operation>equals</operation>
+                <value>0016000000k80zcAAA</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Contact.Authorized_Support_Provider_ASP__c</field>
+                <operation>equals</operation>
+                <value>True</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Entitlement__c</field>
+                <operation>startsWith</operation>
+                <value>Mission Critical</value>
+            </criteriaItems>
+            <template>Support/CASE_IN_PRIORITY_QUEUE_Notification</template>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CSA_Unassigned_Handoff_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Type</field>
+                <operation>equals</operation>
+                <value>WEEE (The Waste Electrical and Electronic Equipment Directive)</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Unassigned</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <booleanFilter>1 AND 2</booleanFilter>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>notEqual</operation>
+                <value>Email-CSA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>CSA_Unassigned_Handoff_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Email-CSA</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Case.Origin</field>
+                <operation>equals</operation>
+                <value>Phone</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>Sales Operations</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>SE_Support_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <criteriaItems>
+                <field>Case.RecordTypeId</field>
+                <operation>equals</operation>
+                <value>SE Support</value>
+            </criteriaItems>
+            <criteriaItems>
+                <field>Case.Status</field>
+                <operation>equals</operation>
+                <value>New</value>
+            </criteriaItems>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>

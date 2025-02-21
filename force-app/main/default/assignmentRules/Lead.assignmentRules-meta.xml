@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AssignmentRules xmlns="http://soap.sforce.com/2006/04/metadata">
+    <assignmentRule>
+        <fullName>LeanData Processing</fullName>
+        <active>false</active>
+        <ruleEntry>
+            <criteriaItems>
+                <field>Lead.Lead_Source_Description__c</field>
+                <operation>equals</operation>
+                <value>Imported from Rainking</value>
+            </criteriaItems>
+        </ruleEntry>
+        <ruleEntry>
+            <assignedTo>Lead_Routing_Queue</assignedTo>
+            <assignedToType>Queue</assignedToType>
+            <formula>TRUE</formula>
+        </ruleEntry>
+    </assignmentRule>
+</AssignmentRules>
