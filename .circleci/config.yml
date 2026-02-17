@@ -21,21 +21,27 @@ jobs:
     steps:
       - checkout
 
-      # 1️⃣ Checkout / create target branch
+      # 🔐 Configure authenticated Git remote (FIXES exit 128)
+      - run:
+          name: Configure Git authentication
+          command: |
+            git remote set-url origin https://$GH_TOKEN@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
+
+      # 1️⃣ Checkout or create target branch safely
       - run:
           name: Checkout target branch
           command: |
             BRANCH="<< pipeline.parameters.branch >>"
-
             echo "Target branch: $BRANCH"
 
             git fetch origin
 
-            if git show-ref --verify --quiet "refs/remotes/origin/$BRANCH"; then
-              git checkout $BRANCH
+            if git ls-remote --exit-code --heads origin "$BRANCH"; then
+              git checkout "$BRANCH"
+              git pull origin "$BRANCH"
             else
-              git checkout -b $BRANCH
-              git push -u origin $BRANCH
+              git checkout -b "$BRANCH"
+              git push -u origin "$BRANCH"
             fi
 
       # 2️⃣ Install dependencies
@@ -48,7 +54,7 @@ jobs:
 
       # 3️⃣ Authenticate to Salesforce
       - run:
-          name: Salesforce Auth (Username + Password)
+          name: Salesforce Auth
           command: |
             TOKEN_RESPONSE=$(curl -s https://test.salesforce.com/services/oauth2/token \
               -d "grant_type=password" \
@@ -61,7 +67,7 @@ jobs:
             INSTANCE_URL=$(echo "$TOKEN_RESPONSE" | jq -r .instance_url)
 
             if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" = "null" ]; then
-              echo "Auth failed"
+              echo "Salesforce authentication failed"
               echo "$TOKEN_RESPONSE"
               exit 1
             fi
@@ -77,6 +83,8 @@ jobs:
           command: |
             if [ ! -f sfdx-project.json ]; then
               echo "Creating minimal sfdx-project.json"
+
+              mkdir -p force-app
 
               printf '{\n' > sfdx-project.json
               printf '  "packageDirectories": [\n' >> sfdx-project.json
@@ -113,15 +121,12 @@ jobs:
               --ignore-conflicts \
               --wait 10
 
-      # 7️⃣ Commit & push
+      # 7️⃣ Commit & push changes
       - run:
           name: Commit Salesforce metadata
           command: |
             git config user.name "salesforce-sync-bot"
             git config user.email "salesforce-sync-bot@users.noreply.github.com"
-
-            echo "Git status before staging:"
-            git status
 
             git add force-app sfdx-project.json manifest || true
 
