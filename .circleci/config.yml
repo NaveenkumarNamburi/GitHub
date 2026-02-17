@@ -3,7 +3,7 @@ version: 2.1
 parameters:
   branch:
     type: string
-    default: "master"
+    default: "main"
 
   packageXmlBase64:
     type: string
