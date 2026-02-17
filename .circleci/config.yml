@@ -100,16 +100,27 @@ jobs:
               echo "SFDX project already exists"
             fi
 
-      # 5️⃣ Write package.xml
       - run:
           name: Write package.xml
           command: |
             mkdir -p manifest
 
-            echo "<< pipeline.parameters.packageXmlBase64 >>" | base64 --decode > manifest/package.xml
+            if [ -z "<< pipeline.parameters.packageXmlBase64 >>" ]; then
+              echo "ERROR: packageXmlBase64 is empty"
+              exit 1
+            fi
+
+            echo "<< pipeline.parameters.packageXmlBase64 >>" | tr -d '\n' | base64 -d > manifest/package.xml
 
             echo "Generated package.xml:"
             cat manifest/package.xml
+
+            # Validate XML before Salesforce call
+            if ! grep -q "<Package" manifest/package.xml; then
+              echo "ERROR: Invalid XML generated"
+              exit 1
+            fi
+
 
       # 6️⃣ Retrieve metadata
       - run:
