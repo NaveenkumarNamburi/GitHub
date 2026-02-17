@@ -21,24 +21,30 @@ jobs:
     steps:
       - checkout
 
-      # 🔐 Configure authenticated Git remote (FIXES exit 128)
+      # 🔐 FORCE HTTPS AUTH (CRITICAL FIX)
       - run:
-          name: Configure Git authentication
+          name: Configure Git to use GitHub PAT
           command: |
-            git remote set-url origin https://$GH_TOKEN@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
+            if [ -z "$GH_TOKEN" ]; then
+              echo "GH_TOKEN is not set!"
+              exit 1
+            fi
 
-      # 1️⃣ Checkout or create target branch safely
+            git remote remove origin
+
+            git remote add origin https://$GH_TOKEN@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
+
+            git fetch origin
+
+      # 1️⃣ Checkout / create branch
       - run:
           name: Checkout target branch
           command: |
             BRANCH="<< pipeline.parameters.branch >>"
             echo "Target branch: $BRANCH"
 
-            git fetch origin
-
             if git ls-remote --exit-code --heads origin "$BRANCH"; then
-              git checkout "$BRANCH"
-              git pull origin "$BRANCH"
+              git checkout -B "$BRANCH" "origin/$BRANCH"
             else
               git checkout -b "$BRANCH"
               git push -u origin "$BRANCH"
@@ -52,7 +58,7 @@ jobs:
             sudo apt-get install -y jq
             npm install -g @salesforce/cli
 
-      # 3️⃣ Authenticate to Salesforce
+      # 3️⃣ Salesforce Auth
       - run:
           name: Salesforce Auth
           command: |
@@ -68,7 +74,6 @@ jobs:
 
             if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" = "null" ]; then
               echo "Salesforce authentication failed"
-              echo "$TOKEN_RESPONSE"
               exit 1
             fi
 
@@ -77,52 +82,20 @@ jobs:
               --alias ciOrg \
               --set-default
 
-      # 4️⃣ Ensure SFDX project exists
-      - run:
-          name: Ensure SFDX project exists
-          command: |
-            if [ ! -f sfdx-project.json ]; then
-              echo "Creating minimal sfdx-project.json"
-
-              mkdir -p force-app
-
-              printf '{\n' > sfdx-project.json
-              printf '  "packageDirectories": [\n' >> sfdx-project.json
-              printf '    {\n' >> sfdx-project.json
-              printf '      "path": "force-app",\n' >> sfdx-project.json
-              printf '      "default": true\n' >> sfdx-project.json
-              printf '    }\n' >> sfdx-project.json
-              printf '  ],\n' >> sfdx-project.json
-              printf '  "namespace": "",\n' >> sfdx-project.json
-              printf '  "sourceApiVersion": "59.0"\n' >> sfdx-project.json
-              printf '}\n' >> sfdx-project.json
-            else
-              echo "SFDX project already exists"
-            fi
-
+      # 4️⃣ Write package.xml safely
       - run:
           name: Write package.xml
           command: |
             mkdir -p manifest
 
             if [ -z "<< pipeline.parameters.packageXmlBase64 >>" ]; then
-              echo "ERROR: packageXmlBase64 is empty"
+              echo "packageXmlBase64 is empty"
               exit 1
             fi
 
             echo "<< pipeline.parameters.packageXmlBase64 >>" | tr -d '\n' | base64 -d > manifest/package.xml
 
-            echo "Generated package.xml:"
-            cat manifest/package.xml
-
-            # Validate XML before Salesforce call
-            if ! grep -q "<Package" manifest/package.xml; then
-              echo "ERROR: Invalid XML generated"
-              exit 1
-            fi
-
-
-      # 6️⃣ Retrieve metadata
+      # 5️⃣ Retrieve metadata
       - run:
           name: Retrieve metadata
           command: |
@@ -132,17 +105,17 @@ jobs:
               --ignore-conflicts \
               --wait 10
 
-      # 7️⃣ Commit & push changes
+      # 6️⃣ Commit & Push
       - run:
-          name: Commit Salesforce metadata
+          name: Commit changes
           command: |
             git config user.name "salesforce-sync-bot"
             git config user.email "salesforce-sync-bot@users.noreply.github.com"
 
-            git add force-app sfdx-project.json manifest || true
+            git add .
 
             if git diff --cached --quiet; then
-              echo "No Salesforce metadata changes detected"
+              echo "No changes"
               exit 0
             fi
 
