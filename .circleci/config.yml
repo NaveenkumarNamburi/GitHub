@@ -7,7 +7,7 @@ parameters:
 
   packageXmlBase64:
     type: string
-    default: ""
+    default: "NtnxDelOppTeamMemberQueueable"
 
   commit_message:
     type: string
