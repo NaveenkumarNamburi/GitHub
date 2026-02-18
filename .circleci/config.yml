@@ -7,7 +7,7 @@ parameters:
 
   packageXmlBase64:
     type: string
-    default: "NtnxDelOppTeamMemberQueueable"
+    default: ""
 
   commit_message:
     type: string
@@ -21,7 +21,7 @@ jobs:
     steps:
       - checkout
 
-      # 🔐 FORCE HTTPS AUTH (CRITICAL FIX)
+      # 🔐 Configure GitHub PAT
       - run:
           name: Configure Git to use GitHub PAT
           command: |
@@ -31,9 +31,7 @@ jobs:
             fi
 
             git remote remove origin
-
             git remote add origin https://$GH_TOKEN@github.com/${CIRCLE_PROJECT_USERNAME}/${CIRCLE_PROJECT_REPONAME}.git
-
             git fetch origin
 
       # 1️⃣ Checkout / create branch
@@ -57,28 +55,24 @@ jobs:
             sudo apt-get update
             sudo apt-get install -y jq
             npm install -g @salesforce/cli
+            sf --version
 
-      # 3️⃣ Salesforce Auth
+      # 3️⃣ Salesforce Auth (JWT FIX)
       - run:
           name: Salesforce Auth
           command: |
-            TOKEN_RESPONSE=$(curl -s https://test.salesforce.com/services/oauth2/token \
-              -d "grant_type=password" \
-              -d "client_id=$SF_CLIENT_ID" \
-              -d "client_secret=$SF_CLIENT_SECRET" \
-              -d "username=$SF_USERNAME" \
-              -d "password=$SF_PASSWORD")
-
-            ACCESS_TOKEN=$(echo "$TOKEN_RESPONSE" | jq -r .access_token)
-            INSTANCE_URL=$(echo "$TOKEN_RESPONSE" | jq -r .instance_url)
-
-            if [ -z "$ACCESS_TOKEN" ] || [ "$ACCESS_TOKEN" = "null" ]; then
-              echo "Salesforce authentication failed"
+            if [ -z "$SF_CLIENT_ID" ] || [ -z "$SF_USERNAME" ] || [ -z "$SF_JWT_KEY_BASE64" ]; then
+              echo "Missing Salesforce environment variables"
               exit 1
             fi
 
-            echo "$ACCESS_TOKEN" | sf org login access-token \
-              --instance-url "$INSTANCE_URL" \
+            echo "$SF_JWT_KEY_BASE64" | base64 --decode > server.key
+
+            sf org login jwt \
+              --client-id "$SF_CLIENT_ID" \
+              --username "$SF_USERNAME" \
+              --jwt-key-file server.key \
+              --instance-url https://test.salesforce.com \
               --alias ciOrg \
               --set-default
 
