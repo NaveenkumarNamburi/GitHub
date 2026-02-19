@@ -72,7 +72,7 @@ jobs:
               --client-id "$SF_CLIENT_ID" \
               --username "$SF_USERNAME" \
               --jwt-key-file server.key \
-              --instance-url https://test.salesforce.com \
+              --instance-url https://nutanix--naveen.sandbox.my.salesforce.com \
               --alias ciOrg \
               --set-default
 
