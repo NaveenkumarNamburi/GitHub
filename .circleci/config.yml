@@ -64,7 +64,7 @@ jobs:
             if [ -z "$SF_CLIENT_ID" ] || [ -z "$SF_USERNAME" ] || [ -z "$SF_JWT_KEY_BASE64" ]; then
               echo "Missing Salesforce environment variables"
               exit 1
-            fi
+            fi 
 
             echo "$SF_JWT_KEY_BASE64" | base64 --decode > server.key
 
