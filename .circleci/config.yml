@@ -75,6 +75,11 @@ jobs:
               --instance-url https://nutanix--naveen.sandbox.my.salesforce.com \
               --alias ciOrg \
               --set-default
+              echo "CLIENT_ID length: ${#SF_CLIENT_ID}"
+              echo "USERNAME length: ${#SF_USERNAME}"
+              echo "JWT_KEY length: ${#SF_JWT_KEY}"
+              echo "INSTANCE_URL: $SF_INSTANCE_URL"
+
 
       # 4️⃣ Write package.xml safely
       - run:
