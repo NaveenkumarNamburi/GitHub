@@ -69,7 +69,7 @@ jobs:
             echo "$SF_JWT_KEY_BASE64" | base64 --decode > server.key
 
             sf org login jwt \
-              --client-id "$SF_CLIENT_ID" \
+              --client-id "$SF_CLIENT_ID" \ 
               --username "$SF_USERNAME" \
               --jwt-key-file server.key \
               --instance-url https://nutanix--naveen.sandbox.my.salesforce.com \
