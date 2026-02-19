@@ -61,7 +61,7 @@ jobs:
       - run:
           name: Salesforce Auth
           command: |
-            if [ -z "$SF_CLIENT_ID" ] || [ -z "$SF_USERNAME" ] || [ -z "$SF_JWT_KEY_BASE64" ]; then
+            if [ -z "$SF_CLIENT_ID" ] || [ -z "$SF_USERNAME" ]; then
               echo "Missing Salesforce environment variables"
               exit 1
             fi 
