@@ -66,7 +66,6 @@ jobs:
               exit 1
             fi 
 
-            echo "$SF_JWT_KEY_BASE64" | base64 --decode > server.key
 
             sf org login jwt \
               --client-id "$SF_CLIENT_ID" \ 
@@ -77,7 +76,6 @@ jobs:
               --set-default
               echo "CLIENT_ID length: ${#SF_CLIENT_ID}"
               echo "USERNAME length: ${#SF_USERNAME}"
-              echo "JWT_KEY length: ${#SF_JWT_KEY}"
               echo "INSTANCE_URL: $SF_INSTANCE_URL"
 
 
